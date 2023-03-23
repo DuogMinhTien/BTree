@@ -1,0 +1,84 @@
+body {
+  background-color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+#result {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 12px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  align-items: center;
+  padding: 6px;
+}
+
+.row {
+  display: flex;
+  column-gap: 12px;
+}
+.node {
+  display: flex;
+}
+.element {
+  border: 2px solid #fff;
+  width: max-content;
+  padding: 6px;
+  color: #fff;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 16px;
+  align-items: center;
+  row-gap: 12px;
+  padding: 12px 24px;
+}
+
+.form .title {
+  color: #333;
+  font-size: 28px;
+}
+
+.form .input {
+  width: calc(100% - 48px);
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: 1px solid pink;
+}
+
+.form .button {
+  border-radius: 8px;
+  width: 100%;
+  padding: 12px 24px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: rgb(13, 214, 97);
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.form .button#delete {
+  background-color: rgb(233, 66, 66);
+}
+.title {
+  color: #fff;
+  font-size: 36px;
+  text-transform: uppercase;
+  font-family: Arial, Helvetica, sans-serif;
+}
