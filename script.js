@@ -30,9 +30,16 @@ function clearDiv() {
 }
 
 function validArr(arr) {
-  return arr.every(item => !isNaN(item) && item != "");
+  return arr.every(item => !isNaN(item) && item.toString() != "");
 }
-
+function hasUniqueElements(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr.indexOf(arr[i]) !== i) {
+      return false;
+    }
+  }
+  return true;
+}
 btnResult.onclick = () => {
   if (input.value) {
     arr = input.value.split(",");
@@ -41,9 +48,24 @@ btnResult.onclick = () => {
       return +value;
     });
     if (validArr(arr)) {
+      if (!hasUniqueElements(arr)) {
+        $.toast({
+          text: "Các phần tử trong mảng phải là duy nhất!",
+          heading: "Báo lỗi",
+          showHideTransition: "slide",
+          position: {
+            right: 80,
+            top: 20,
+          },
+          stack: false,
+          icon: "error",
+        });
+        return false;
+      }
       clearDiv();
       const result = BTree(arr);
       result.show();
+      console.log(result);
       $.toast({
         text: "BTree thành công!",
         heading: "Thành công",
