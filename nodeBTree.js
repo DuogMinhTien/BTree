@@ -38,6 +38,7 @@ export default class nodeBTree {
     this.arr.push(element);
     this.sort();
     this.handle();
+    console.log(element);
   }
   getConnect(arrKey, arrValue) {
     const obj = {};
@@ -90,15 +91,17 @@ export default class nodeBTree {
         this.parentNode.connect = newObj;
         if (parent.arr.length >= 5) {
           parent.handle();
-          parent.connect = {
-            0: parent.connect[0],
-            1: parent.connect[1],
-          };
-          for (let i = 0; i < 2; i++) {
-            const parentConnect = parent.connect[i].connect;
-            for (let key in parentConnect) {
-              parentConnect[key].parentNode = parent.connect[i];
-            }
+        }
+        //Update lại connect theo độ dài mảng parrent
+        parent.connect = Object.fromEntries(
+          Object.entries(parent.connect).slice(0, parent.arr.length + 1)
+        );
+
+        for (let i = 0; i < parent.arr.length + 1; i++) {
+          const parentConnect = parent.connect[i].connect;
+          console.log({ parentConnect });
+          for (let key in parentConnect) {
+            parentConnect[key].parentNode = parent.connect[i];
           }
         }
       }
